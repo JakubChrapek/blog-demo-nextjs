@@ -1,11 +1,14 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
+// API
 import {getSortedPostsData} from '../lib/posts'
 
+// Components
 import Layout, {siteTitle} from '../components/layout'
 import Date from '../components/date'
 
+// Styles
 import utilStyles from '../styles/utils.module.css'
 
 export default function Home({ allPostsData }) {
@@ -15,8 +18,7 @@ export default function Home({ allPostsData }) {
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>Introduction</p>
-
+        <p>Introduction, framer-motion works like a charm, awesome!</p>
       </section>
       <section className={utilStyles.headingMd}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
