@@ -1,8 +1,11 @@
-import styles from './layout.module.css'
+
+import {motion} from 'framer-motion'
 import Head from 'next/head'
-import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
+
+import styles from './layout.module.css'
+import utilStyles from '../styles/utils.module.css'
 
 const name = 'Kuba Chrapek'
 export const siteTitle = 'Next.js example'
@@ -35,12 +38,35 @@ const Layout = ({children, home}) => {
               className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
               alt={name}
             />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
+            <motion.h1 
+              className={utilStyles.heading2Xl}
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: 4,
+                  scale: 0.9
+                },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                  transition: {
+                    delay: 0.2
+                  }
+                }
+              }}
+
+            >
+              {name}
+            </motion.h1>
           </>
         ) : (
           <>
             <Link href="/">
-              <a>
+              <motion.a whileHover={{
+                  y: 2, cursor: 'pointer'}}>
                 <Image
                   src="/images/kuba-profile.jpg"
                   width="120px"
@@ -48,13 +74,31 @@ const Layout = ({children, home}) => {
                   className={`${styles.headerImage} ${utilStyles.borderCircle}`}
                   alt={name}
                 />
-              </a>
+              </motion.a>
             </Link>
-            <h2 className={utilStyles.headingLg}>
+            <motion.h2 
+              className={utilStyles.headingLg}
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: 4,
+                },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    delay: 0.2
+                  }
+                }
+              }}
+
+            >
               <Link href="/">
                 <a>{name}</a>
               </Link>
-            </h2>
+            </motion.h2>
           </>
         )}
       </header>
